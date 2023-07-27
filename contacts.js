@@ -1,6 +1,7 @@
 // make imports of modules fs and path to work with the file system
 const fs = require("fs").promises; // fs is installed by default when using node, .promises allows to use promises
 const path = require("path");
+const { nanoid } = require('nanoid');
 
 // Create a contactsPath variable and put the path to the contacts.json file in it. To compose a path, use the methods of the path module
 const contactsPath = path.join(__dirname, "/db/contacts.json");
@@ -44,7 +45,7 @@ async function removeContact(contactId) {
 async function addContact(name, email, phone) {
     const data = await read;
     const newContact = {
-        id: "",
+        id: nanoid(),
         name: name,
         email: email,
         phone: phone,
